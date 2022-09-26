@@ -1,10 +1,13 @@
 package com.epam.mjc.io;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
 
 
 public class FileReader {
@@ -18,7 +21,9 @@ public class FileReader {
             }
         }
         catch(IOException e){
-            System.err.print(e);
+            //System.err.print(e);
+            Logger logger = Logger.getLogger(FileReader.class.getName());
+            logger.log(Level.ALL, "Error while reading the file,");
         }
 
         Map<String, String> m = new HashMap<>();
