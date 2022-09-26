@@ -9,27 +9,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-
 public class FileReader {
 
     public Profile getDataFromFile(File file) {
         String str = "";
-        try(FileInputStream stream = new FileInputStream(file)){
+        try (FileInputStream stream = new FileInputStream(file)) {
             int symbol;
             while ((symbol = stream.read()) != -1) {
-                str += (char)symbol;
+                str += (char) symbol;
             }
-        }
-        catch(IOException e){
-            //System.err.print(e);
+        } catch (IOException e) {
             Logger logger = Logger.getLogger(FileReader.class.getName());
             logger.log(Level.ALL, "Error while reading the file,");
         }
 
         Map<String, String> m = new HashMap<>();
-        String [] pairs = str.split("\n");
-        for(String item:pairs){
-            String [] keyValue = item.split(": ");
+        String[] pairs = str.split("\n");
+        for (String item : pairs) {
+            String[] keyValue = item.split(": ");
             m.put(keyValue[0], keyValue[1]);
         }
         String name = m.get("Name");
