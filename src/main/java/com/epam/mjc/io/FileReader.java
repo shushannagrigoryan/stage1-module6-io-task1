@@ -11,14 +11,14 @@ public class FileReader {
 
     public Profile getDataFromFile(File file) {
         String str = "";
-        try(FileInputStream stream = new FileInputStream("Profile.txt")){
+        try(FileInputStream stream = new FileInputStream(file)){
             int symbol;
             while ((symbol = stream.read()) != -1) {
                 str += (char)symbol;
             }
         }
         catch(Exception e){
-            System.out.println("Error while reading the file.");
+            System.err.print(e);
         }
 
         Map<String, String> m = new HashMap<>();
