@@ -17,7 +17,7 @@ public class FileReader {
                 str += (char)symbol;
             }
         }
-        catch(Exception e){
+        catch(IOException e){
             System.err.print(e);
         }
 
